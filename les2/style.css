@@ -1,29 +1,16 @@
-.green
+            .wit
 {
-    background-color: green;
-    height: 50px;
-    width: 50px;
-    float: left;
+                width: 36px;
+                height: 36px;
+                background: white;
+                float: left;
+                
 }
-
-.wit
+             .Zwart
 {
-    background-color: red;
-    height: 50px;
-    width: 50px;
-    float: left;
-}
-
-.green1
-{
-    background-color: green;
-    height: 50px;
-    width: 50px;
-}
-
-.wit1
-{
-    background-color: red;
-    height: 50px;
-    width: 50px;
+                width: 36px;
+                height: 36px;
+                background: black;
+                 float: left;
+               
 }
