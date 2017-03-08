@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="nl">
+	<head>
+        <title>MI2-les4</title>  
+        
+        <script src="../JQuery/jquery-3.1.1.min.js"></script>
+        <script>
+        var aantal = $("li").length;
+            $("body").append("Aantal plaatsen: " + aantal);
+            var plaats = $("li").last().detach();
+        </script>
+        
+</head>
+<body>
+    <ul>
+    <li> Brussel - C° 5</li>
+    <li> Parijs - C° 10</li>
+    <li> Berlijn C° 12</li>
+    <li> Amsterdam C° 7</li>
+    <li> Istanbul C° 9</li>
+    </ul>
+    
+</body>
+</html>
