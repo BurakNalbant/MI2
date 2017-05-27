@@ -1,0 +1,218 @@
+
+#page 
+{
+	
+	border:1px solid black;
+	text-align:left;
+	width:90%;
+	padding:30px;
+	height:650px;
+}
+img
+{
+
+    margin-right: 30%;
+    width: 20%;
+}
+body
+{
+    background-image:url("images/fond.jpg");
+}
+
+
+section
+{margin-top: 25%}
+
+
+section p
+{color: white;
+text-align: center;
+}
+
+h1 {
+  margin-left: 10%;
+	font-size:30px;
+	font-family:Arial, sans serif;
+  color: white;
+}
+
+   a
+    {
+    	text-decoration: none;
+    }
+
+    button
+    {
+      margin-left: 10%;
+    	border-radius: 10px;
+    }
+
+    .btn
+    {
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+
+img.verloren {
+	float:right;
+}
+
+h2 {
+  margin-left: 10%;
+	font-size:16px;
+	font-family:Arial, sans-serif;
+  color: white;
+}
+
+#woord {
+	margin:30px 0 0 0;
+	clear:both;
+	top:100px;
+}
+
+#word td {
+	padding:10px;
+	background-color:#1ee193;
+	border:2px inset black;
+	width:40px;
+	height:40px;
+	font-weight:bold;
+	font-size:1.5em;
+	text-align:center;
+}
+
+ #word p{
+	visibility:hidden;
+}
+
+#word
+{
+
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+#toetsenbord{
+  margin-left: 10%;
+	border:4px outset black;
+	padding:10px;
+	background-color:#2b80d5;
+  
+}
+
+#toetsenbord td {
+	background-color:white;
+	border:1px solid black;
+	width:25px;
+	height:25px;
+	text-align:center;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+.rond {
+       border-radius: 20px;
+       margin-right: auto;
+       margin-left: auto;
+       display: block;
+       width: 180px;
+     }
+
+section
+{margin-top: 25%}
+
+section.themas
+{
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 29%;
+}
+
+section a 
+{
+        margin-top: 1%;
+        float: left;
+        position: relative;
+        text-decoration: none;
+        background: rgba(0, 0, 9, 0.5);
+        border-radius: 30px;
+        padding: 1% 1% 0.1% 1%;
+        margin-left: 5%;
+        box-shadow: -10px -10px 50px 10px rgba(0, 0, 0, 0.7) inset;
+}
+
+
+section a:hover 
+{
+  background-color: rgba(75, 0, 0, 0.9);
+}
+
+
+@media all and (max-width: 1024px)
+{
+    img
+    {
+      width: 45%;
+      height: auto;
+      margin-bottom: 1em;
+      text-align: center;
+      margin-right: 25%;
+    }
+
+    #toetsenbord
+    {
+        margin-bottom: 20%;
+        margin-right: 5%;
+    }
+
+    #word
+    {
+      margin-right: 8%;
+    }
+
+    #word td 
+    {
+  
+  background-color:#1ee193;
+  border:2px inset black;
+  font-size:0.9em;
+  font-weight:bold;
+  text-align:center;
+}
+
+
+    h1, h2
+    {
+    	font-size: 1.5em;
+    	text-align: center;
+      color: white;
+    }
+
+    #page
+    {
+    	width: auto;
+    	height: 100%;
+    	display: inherit;
+    }
+    
+    button
+    {
+      display: none;
+    	font-size: 2em;
+    	width: auto;
+    	height: 10%;
+    	border-radius: 100px;
+    }
+
+    img.rond
+    {
+      width: 100%;
+    }
+    
+ 
+    section
+    {
+      margin-top: 50%;
+      width: auto;
+    }
+}

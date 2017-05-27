@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Galgje/Pendu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Css/framework7.material.min.css">
+    <link rel="stylesheet" href="Css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="Css/my-app.css">
+    <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="js/jquery-3.1.1.min.js">
+    </script>
+    <link rel="stylesheet" href=".//stijl.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    
+    <script>
+        "use strict";
+        var $;
+        var muziek;
+        $(function () {
+            muziek = document.getElementById("muziek");
+            $('#muziek')[0].loop = true;
+            $('#muziek')[0].play();
+        });
+        
+        
+        
+        $(document).ready(function () {
+            $('#muziekaan').click(function () {
+                return muziek.paused ? muziek.play() : muziek.pause();
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <script  src="js/framework7.min.js"></script>
+    <script  src="js/my-app.js"></script>
+    <div class="panel-overlay"></div>
+    <div id="panelLeft" class="panel panel-left panel-reveal">
+        <h1><a href="rules.html" class="external">Rules</a></h1>
+        <h2><a href="regels.html" class="external">Regels</a></h2>
+        <h2><a href="regles.html" class="external">Règles</a></h2> 
+        <h2><a href="index.html" class="external">Language</a></h2>
+    </div>
+    
+    <audio preload="auto" id="muziek">
+        <source src="song/2Pac_Let_Me.mp3" type="audio/mp3">
+        <source src="2Pac_Let_Me.ogg" type="audio/ogg"> </source></source></audio>
+    <div class="panel panel-right panel-cover">
+        <div class="content-block">
+            <div id="highscoreDB">
+                <div>
+                    <h1>Highscore</h1> </div>
+                <table id="highscoreTableDB">
+                    <thead>
+                        <tr>
+                            <th>Naam speler</th>
+                            <th>Score speler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="views">
+        <div class="view view-main">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="center sliding"> Menu </div>
+                    <div class="right">
+                        <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="toolbar">
+                <div class="toolbar-inner"> 
+                    
+                    <a href="#" class="button" id="Herstart">Herstarten</a> 
+                    
+                    <a href="#" class="button" id="muziekaan">Muziek Uit/Aan</a> 
+                        <a href="#" data-panel="right" id="Hscore" class="button open-panel">Highscore</a> 
+                            </div>
+            </div>
+            <div class="page-content">
+                <div id="leftLevel">
+                    <section class="themas">
+                         <p>
+                            You have to guess a random word that is related to the theme of your choice.
+                            You have 9 chances to be able to find the word, if you happen to find the word before the 9 errors
+                            You have won otherwise you lost and the word you were looking for will be revealed.
+                        </p>
+                    </section>
+                </div>
+                <div id="rightDatabase" class="">
+                    <div data-role="page" >
+                        <div data-role="header" data-position="fixed"> </div>
+                        <div data-role="content" class="score">
+                            <table >
+                                <thead>
+                                    <tr> </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

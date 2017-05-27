@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Le pendu</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Css/framework7.material.min.css">
+    <link rel="stylesheet" href="../../../Css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="../../Css/my-app.css">
+    <link rel="stylesheet" href="../css/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="../js/jquery-3.1.1.min.js">
+    </script>
+     <link rel="stylesheet" href="../stijl.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png" >
+    <script src="../js/jquery-1.11.2.min.js"></script>
+<script language="JavaScript">
+            <!--
+                var secretwoord;
+                
+                var now=new Date();         
+                var arraywoorden=new Array();   
+                var woorden=new Array();        
+                
+                var groottewd;              
+                var miss=0;         
+                var gevondenwd=0;       
+                var einde=false;                
+                var  muziek;
+    var naam;
+    var voegScoreEenKeer = 1;
+    
+    function $_GET(param) {
+    var vars = {};
+    window.location.href.replace(location.hash, '').replace(/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+        function (m, key, value) { // callback
+            vars[key] = value !== undefined ? value : '';
+        });
+    if (param) {
+        return vars[param] ? vars[param] : "Gast";
+    }
+    return vars;
+}
+$(function () {
+    muziek = document.getElementById("muziek");
+    $('#muziek')[0].loop = true;
+    $('#muziek')[0].play();
+    naam = $_GET('name');
+    document.getElementById("uwNaam").innerHTML = naam;
+    
+});
+    
+    
+function MusiqueOnOff() {
+    return muziek.paused ? muziek.play() : muziek.pause();
+}
+                 woorden[0]="FANTA";
+                woorden[1]="GINI";
+                woorden[2]="OASIS";
+                woorden[3]="ORANGINA";
+                woorden[4]="TROPICO";
+                woorden[5]="STARBUCKS";
+                woorden[6]="SCHWEPPES";
+                woorden[7]="LIPTON";
+                woorden[8]="COLORADO";
+                woorden[9]="JUPILER";
+                woorden[10]="MAES";
+                woorden[11]="BURN";
+                woorden[12]="SPRITE";
+                woorden[13]="NESTEA";
+                woorden[14]="CARLSBERG";
+                woorden[15]="PEPSI";
+                woorden[16]="SPA";
+                woorden[17]="EVIAN";
+                woorden[18]="MONSTER";
+                woorden[19]="AQUARIUS";
+                woorden[20]="ACTIMEL";
+                
+                secretwoord=woorden[now.getSeconds() % woorden.length];
+                groottewd=secretwoord.length;
+                
+                
+                function wisselkleur(element,kleur){
+                    element.style.backgroundColor=kleur;
+                }
+                
+                function ReloadFunctie()
+                {
+                     javascript:location.reload();
+                }
+                
+                function functie(element){
+                    
+                    
+                    if(element.style.backgroundColor=="lightGreen" ||einde) return;
+                    
+                    
+                    var lettre=element.innerHTML;
+                    wisselkleur(element,"lightGreen");
+                    
+                    
+                    var vinden=false;
+                    
+                    
+                    for(var i=0; i<groottewd; i++) {
+                        
+                        
+                        if(arraywoorden[i].innerHTML==lettre) {
+                            arraywoorden[i].style.visibility='visible'; 
+                            vinden=true;
+                            gevondenwd++;
+                        }
+                        
+                    }
+                    
+                    
+                    if(!vinden){
+                        miss++;
+                        document.images['verloren'].src="../images/verloren_"+miss+".jpg"; 
+                        
+                        
+                        if(miss==9){
+                            
+                            //ajouter 
+                            naam = $_GET('name');
+                            if (voegScoreEenKeer === 1) {
+                            var score = "Verloren! uw aantal " + miss; 
+                            highScore.push({ "naam": naam, "score": score }); db.transaction(function (tx) { tx.executeSql( 'INSERT INTO highscores (naam,score) VALUES (?, ?)', [naam, score]); });
+                            updateTablesSQL();
+                                 }
+                            alert("Vous avez perdu !");
+                            for(var i=0; i<groottewd; i++) arraywoorden[i].style.visibility='visible';
+                            einde=true;
+                           
+
+                        }
+
+                    }
+                    if(gevondenwd==groottewd){
+                        //ajouter
+                        naam = $_GET('name');
+                        if (voegScoreEenKeer === 1) {
+                        var score = "Proficiaat! uw aantal miss " + miss ; 
+                            highScore.push({ "naam": naam, "score": score }); db.transaction(function (tx) { tx.executeSql( 'INSERT INTO highscores (naam,score) VALUES (?, ?)', [naam, score]); });
+                        updateTablesSQL();
+                             }
+                        alert("Félicitations ! vous avez gagner !");
+                        einde=true;
+                       
+                    }
+                }
+    
+    // tout ce qui ce trouve ici en dessous je l'ai ajouté
+    
+    
+    //Virtuele database om de score van iedere speler aan te tonen
+function updateTables() {
+    // update de tabel in het '2e' scherm met de inhoud
+    // van de array highScore (niet WebSQL)
+    teller = 0;
+    tText = "";
+    for (teller = 0; teller < highScore.length; teller += 1) {
+        tText += "<tr><td>" + highScore[teller].naam + "<\/td><td>" + highScore[teller].score + "<\/td><\/tr>";
+    }
+    $("#highscore tbody").html(tText);
+}
+
+function updateTablesSQL() {
+    // update de tabel in het '3e' scherm met de inhoud
+    // van een select query op de highscores tabel in de
+    // lokale WebSQL databank)
+    db.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM highscores order by score desc', [], function (tx, results) {
+            var len = results.rows.length
+                , i;
+            tText = "";
+            for (teller = 0; teller < len; teller += 1) {
+                tText += "<tr><td>" + results.rows.item(teller).naam + "<\/td><td>" + results.rows.item(teller).score + "<\/td><\/tr>";
+            }
+            $("#highscoreDB tbody").html(tText);
+        }, null);
+    });
+}
+    
+    $(document).ready(function () {
+        naam = "Burak";
+    score = "Verloren met miss= 6";
+    highScore = [{
+        "naam": naam,
+        "score": score
+				}];
+
+
+    $(document).bind('pageinit', function () {
+        // schakel de transities bij navigatie tussen
+        // schermen uit.
+        $.mobile.defaultPageTransition = 'none';
+    });
+
+    // open de databank
+    db = openDatabase('mydb', '1.0', 'Test DB', 0.1 * 1024 * 1024);
+
+    db.transaction(function (tx) {
+        // maak de tabel aan als deze nog niet bestond
+        tx.executeSql('CREATE TABLE IF NOT EXISTS highscores (naam, score)');
+        // haal het aantal highscores op uit de tabel highscores
+        // de ? worden vervangen door de elementen in de array na
+        // de querystring
+        tx.executeSql('select count(*) as aantal from highscores where naam like ? and score like ?', [naam, score], function (tx, results) {
+            // kijk na of het resultaat ok is.
+            console.log("select werkt");
+            if (results.rows.item(0).aantal === 0) {
+                // er was nog geen combinatie met de naam & score in de db, dus voeg die nu toe :
+                tx.executeSql('INSERT INTO highscores (naam,score) VALUES (?, ?)', [naam, score], function (tx, results) {
+                    // de select was ok
+                    console.log("ok!");
+                }, function (tx, error) {
+                    // er was een probleem met de select
+                    console.log("NOK!");
+                });
+            }
+
+        }, function (tx, error) {
+            console.log("NOK!");
+        });
+    });
+
+    // update de gegevens in de tabellen op het 2e en 3e scherm
+    updateTables();
+    updateTablesSQL();
+
+
+});
+
+            -->
+        </script>
+    </head>
+            
+<body class>
+<script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/my-app.js"></script>
+    <div class="panel-overlay"></div>
+    <div id="panelLeft" class="panel panel-left panel-reveal">
+        
+<h2><a href="../regles.html" class="external">Regles</a></h2>
+<h2><a href="themas.html" class="external">Th&#233mes</a></h2>
+<h2><a href="../index.html" class="external">Langue</a></h2>
+        
+        
+    </div>
+<audio preload="auto" id="muziek">
+                        <source src="../song/2Pac_Let_Me.mp3" type="audio/mp3">
+                        <source src="2Pac_Let_Me.ogg" type="audio/ogg">
+                    </audio>
+    <div class="panel panel-right panel-cover">
+        <div class="content-block">
+            <div id="highscoreDB">
+                <div>
+                    <h1>Highscore</h1> </div>
+                <table id="highscoreTableDB">
+                    <thead>
+                        <tr>
+                            <th>Nom joueur</th>
+                            <th>Score joueur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="views">
+        <div class="view view-main">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="center sliding"> Menu </div>
+                    <div class="right">
+                        <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="toolbar">
+                <div class="toolbar-inner"> 
+                    <a href="#" class="button" id="Herstart" onclick="ReloadFunctie();">Rejouer</a>
+                    <a href="#" class="button" id="muziekaan" onclick="MusiqueOnOff()">Musique on/off</a>
+                      <a href="#" data-panel="right" id="Hscore" class="button open-panel">Highscore</a> 
+                  </div>
+            </div>
+            <div class="page-content">
+                <div id="leftLevel">
+                                    
+                      <h1>Le pendu</h1>
+                  <h2> Joueur: <span id="uwNaam"> </span></h2>
+    <h2>Entrez une lettre avec le clavier ci-dessous.</h2>
+        
+    <img name="verloren" class="verloren" src="../images/verloren_0.jpg">
+
+    <table id="word">
+        <tr>
+            <script language="javascript">
+                for(var i=0; i<groottewd; i++) document.write("<td> <p id=\""+i+"\">"+secretwoord.charAt(i)+"</p></td>");
+            </script>
+        </tr>
+    </table>
+
+    <table id="toetsenbord">
+     <tr>
+      <td onclick="functie(this);" >A</td>
+      <td onclick="functie(this);" >B</td>
+      <td onclick="functie(this);" >C</td>
+      <td onclick="functie(this);" >D</td>
+      <td onclick="functie(this);" >E</td>
+      <td onclick="functie(this);" >F</td>
+      <td onclick="functie(this);" >G</td>
+      <td onclick="functie(this);" >H</td>
+      <td onclick="functie(this);" >I</td>
+      <td onclick="functie(this);" >J</td>
+     </tr>
+     <tr>
+      <td onclick="functie(this);" >K</td>
+      <td onclick="functie(this);" >L</td>
+      <td onclick="functie(this);" >M</td>
+      <td onclick="functie(this);" >N</td>
+      <td onclick="functie(this);" >O</td>
+      <td onclick="functie(this);" >P</td>
+      <td onclick="functie(this);" >Q</td>
+      <td onclick="functie(this);" >R</td>
+      <td onclick="functie(this);" >S</td>
+      <td onclick="functie(this);" >T</td>
+     </tr>
+     <tr>
+      <td onclick="functie(this);" >U</td>
+      <td onclick="functie(this);" >V</td>
+      <td onclick="functie(this);" >W</td>
+      <td onclick="functie(this);" >X</td>
+      <td onclick="functie(this);" >Y</td>
+      <td onclick="functie(this);" >Z</td>
+     </tr>
+    </table>
+    <br>
+
+        
+    
+    
+    
+    <script language="javascript">
+        for(var i=0; i<groottewd; i++) arraywoorden[i]=document.getElementById(i);
+    </script>
+
+</div>
+                </div>
+                    
+                <div id="rightDatabase" class="">
+                    <div data-role="page" id="highscoreDB">
+                        <div data-role="header" data-position="fixed">
+                            <h1>Highscore</h1> </div>
+                        <div data-role="content" class="score">
+                            <table id="highscoreTableDB">
+                                <thead>
+                                    <tr>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
