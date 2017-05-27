@@ -1,0 +1,14 @@
+.Groen{
+    width: 36px;
+    height: 36px;
+    background: green;
+    float: left;
+}
+
+.Blauw{
+    width: 36px;
+    height: 36px;
+    background: blue;
+    float: left;
+}
+

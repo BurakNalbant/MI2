@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+	<head>
+		<meta charset="utf-8" />
+		<title>MI2-les1</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Steven" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MI2-les4</title>  
+<script src="../JQuery/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+    "use strict"
+        $(document).ready(function(){
+            var plaats = $("li").last();
+            plaats.detach();
+            var aantal = $("li").length;
+            $("body").prepend("Aantal Locaties: " + aantal);
+            var i = 19;
+                for(var x = 1; x <= 5;x++){
+                 $("#x"+[x]).append(": " + "C°" + " "  + i );
+                 i = i + 1;
+                }
+            $("ul").prepend(plaats);
+
+            
+        });
+    </script>
+    <ul>
+        <li id="x1"> Brussel</li>
+        <li id="x2"> Parijs</li>
+        <li id="x3"> Berlijn</li>
+        <li id="x4"> Amsterdam</li>
+        <li id="x5"> Istanbul</li>
+    </ul>
+    <br>
+    <a href="../index.html">Terug naar Index</a>
+</body>
+</html>
