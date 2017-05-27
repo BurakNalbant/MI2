@@ -1,0 +1,29 @@
+<style>
+          body
+          {
+              //
+          } 
+   
+#summary {
+    width: 60%;
+    float:left; 
+   
+  font-size: 1.75em;
+}
+
+}
+ #episodes {
+
+       max-width: 80vw;
+       margin: auto;
+       padding: 0.1em;
+     text-align: center;
+   
+    }
+    
+    #content {
+        display: none;
+    background-color: white;
+    }
+    
+  </style>
